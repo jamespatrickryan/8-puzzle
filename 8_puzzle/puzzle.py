@@ -4,20 +4,20 @@ from collections import namedtuple
 from constants import *
 
 
-class Puzzle(namedtuple('Puzzle', ['board', 'dimension', 'zero_at'])):
+class Puzzle(namedtuple('Puzzle', ['board', 'dimension', 'zero'])):
     __slots__ = ()
 
-    def __new__(cls, board, dimension, zero_at=None):
-        if zero_at is None:
-            zero_at = board.index(0)
+    def __new__(cls, board, dimension, zero=None):
+        if zero is None:
+            zero = board.index(0)
 
-        return super().__new__(cls, board, dimension, zero_at)
+        return super().__new__(cls, board, dimension, zero)
 
     def solved(self):
         return self.board == tuple(range(self.dimension**2))
 
     def actions(self):
-        at = self.zero_at
+        at = self.zero
 
         if at >= self.dimension:
             yield self._move(at - self.dimension)
@@ -30,7 +30,7 @@ class Puzzle(namedtuple('Puzzle', ['board', 'dimension', 'zero_at'])):
 
     def _move(self, to):
         board = list(self.board)
-        board[self.zero_at], board[to] = board[to], board[self.zero_at]
+        board[self.zero], board[to] = board[to], board[self.zero]
 
         return Puzzle(tuple(board), self.dimension, to)
 
@@ -77,4 +77,4 @@ class Node(namedtuple('Node', ['puzzle', 'parent'])):
             +1: RIGHT
         }
 
-        return directions[self.puzzle.zero_at - self.parent.puzzle.zero_at]
+        return directions[self.puzzle.zero - self.parent.puzzle.zero]
