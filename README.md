@@ -8,7 +8,7 @@ Features a walkthrough for the optimal elucidation of [8-Puzzle](https://en.wiki
 
 [`__new__()`](https://docs.python.org/3/reference/datamodel.html#object.__new__) is a static method with the class as its first argument (`object.__new__(cls[, ...])` the residue are those handed to the object constructor expression), of which we bid an instance.
 
-Typical implementations invoke the superclass's [`__new__()`](https://docs.python.org/3/reference/datamodel.html#object.__new__) method — `super().__new__(cls[, ...])` to instantiate an object with appropriate arguments. More than anything else, Python propounded this mechanism (often overridden in custom metaclasses) as a privilege for subclasses of immutable types (as though *int*, *str*, or *tuple*) to tweak instance fabrication prior and deliver it to the callee.
+Typical implementations invoke the superclass's [`__new__()`](https://docs.python.org/3/reference/datamodel.html#object.__new__) method — `super().__new__(cls[, ...])` to instantiate an object with appropriate arguments. More than anything else, Python propounded this mechanism (often overridden in custom metaclasses) as a privilege for subclasses of immutable types (as though *int*, *str*, or *tuple*) to tweak instance fabrication prior and deliver it to the caller.
 
 ### namedtuple
 
