@@ -1,5 +1,5 @@
-import random
 from collections import namedtuple
+import random
 
 from constants import *
 
